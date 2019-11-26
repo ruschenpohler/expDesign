@@ -156,7 +156,7 @@ tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", h
 
 ### Run-down
 I. Regression Framework  
-II. Statistical POwer  
+II. Randomization  
 III.
  
 ]
@@ -167,6 +167,7 @@ III.
 layout: false
 
 ### I. [Regression Framework](#regression)
+### II. [Randomization](#randomization)
   - [](#)
 
 
@@ -175,7 +176,37 @@ name: regression
 
 # I. General REgression Framework
 
+First formalization:
+
 $Y _ { i T } = \alpha _ { i } + X _ { i } \beta + \bar { \tau } T + \tau _ { i } T + \varepsilon _ { i }$
+
+.. with average treatment effect defined as:
+
+$\overline { \tau } = E \left( Y _ { i 1 } - Y _ { i 0 } \right) = E \left( Y _ { i 1 } \right) - E \left( Y _ { i 0 } \right)$
+
+
+.. whereby the **identification problem** is that, if propensity to receive treatment is correlated with unobserved covariate:
+
+$\hat { \tau } = E \left( Y _ { i 1 } | T = 1 \right) - E \left( Y _ { i 0 } | T = 0 \right) \neq E \left( Y _ { i 1 } \right) - E \left( Y _ { i 0 } \right) = \bar { \tau }$
+
+
+---
+
+name: randomization
+
+# II. Randomization
+
+## Block Randomization
+
+In experiments, stratification typically decreases variance of estimate (more precisely, variance of unobserved component of estimate):
+
+$\operatorname{var} ( \hat { \tau } ) = \frac { \sigma ^ { 2 } } { N } = \frac { \operatorname {var} ( \varepsilon ) } { N \cdot \operatorname { var } ( T ) }$
+
+Added value: Ensures standard error of treatment effect in each stratum is smallest possible (heterogeneous treatment effects estimation)
+
+Controlling for strata variables as covariates in regression framework achieves essentially the same, post-hoc
+
+
 
 
 ---
